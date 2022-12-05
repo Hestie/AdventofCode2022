@@ -1,0 +1,63 @@
+{
+    "name": "nds-app",
+    "private": true,
+    "devDependencies": {
+        "@babel/core": "^7.1.2",
+        "@babel/plugin-proposal-class-properties": "^7.1.0",
+        "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+        "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+        "@babel/plugin-transform-arrow-functions": "^7.0.0",
+        "@babel/plugin-transform-for-of": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "babel-cli": "^6.26.0",
+        "babel-core": "^7.0.0-bridge",
+        "babel-eslint": "^10.0.1",
+        "babel-jest": "^23.6.0",
+        "babel-loader": "^8.0.4",
+        "babel-plugin-module-resolver": "^3.1.1",
+        "babel-preset-es2015": "^6.24.1",
+        "jest": "^26.3.0"
+    },
+    "scripts": {
+        "test": "jest",
+        "start": "node app"
+    },
+    "type": "module",
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "useBuiltIns": "entry",
+                    "targets": {
+                        "node": "8.10"
+                    }
+                }
+            ]
+        ],
+        "plugins": [
+            [
+                "module-resolver",
+                {
+                    "root": [
+                        "."
+                    ]
+                }
+            ],
+            "@babel/plugin-transform-arrow-functions",
+            "@babel/plugin-proposal-export-namespace-from",
+            "@babel/plugin-proposal-object-rest-spread",
+            "@babel/plugin-transform-for-of",
+            [
+                "@babel/plugin-proposal-class-properties",
+                {
+                    "loose": false
+                }
+            ]
+        ]
+    },
+    "dependencies": {
+        "lodash": "^4.17.20",
+        "neat-csv": "^5.2.0"
+    }
+}

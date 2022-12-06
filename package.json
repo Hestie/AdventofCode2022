@@ -1,5 +1,5 @@
 {
-    "name": "nds-app",
+    "name": "adventcode2022",
     "private": true,
     "devDependencies": {
         "@babel/core": "^7.1.2",

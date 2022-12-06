@@ -1,4 +1,4 @@
-import daySix from './services/daySix.js';
+import dayOne from './services/dayOne.js';
 
 const run = async () => {
     try {  

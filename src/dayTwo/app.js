@@ -8,6 +8,14 @@ const start = (input) => {
   return result.reduce((score, item) => score + item, 0)
 }
 
+const startPartTwo = (input) => {
+  const parsedInput = input || parseFile()
+  const result = parsedInput.map(element => {
+    return playGamePart2(element)
+  })
+  return result.reduce((score, item) => score + item, 0)
+}
+
 const parseFile = () => {
   const result = fileReader.readTextFile('input/dayTwo')
   const array = result.split('\n')
@@ -28,10 +36,31 @@ const playGame = (data) => {
   return score + bonus
 }
 
+const playGamePart2 = (data) => {
+  // determine who wins?
+  const game = data.split(' ')
+  const them = game[0]
+  const resultKey = game[1]
+  const result = resultMatch[resultKey]
+  const mappedGame = `${shapeMatch[them]}, ${result}`
+  const shape = shapeResult(mappedGame)
+  const score = resultScore[result]
+
+  // calculate my score
+  const bonus = shapePart2Score[shape]
+  return score + bonus
+}
+
 const shapeScore = {
   X: 1, // Rock
   Y: 2, // Paper
   Z: 3 // Scissor
+}
+
+const shapePart2Score = {
+  rock: 1, // Rock
+  paper: 2, // Paper
+  scissor: 3 // Scissor
 }
 
 const shapeMatch = {
@@ -41,6 +70,12 @@ const shapeMatch = {
   Y: 'paper',
   C: 'scissor',
   Z: 'scissor'
+}
+
+const resultMatch = {
+  X: 'lost',
+  Y: 'draw',
+  Z: 'win'
 }
 
 // Rock defeats Scissors, Scissors defeats Paper, and Paper defeats Rock
@@ -55,6 +90,20 @@ const gameResult = (game) => {
   ])
   return map.get(game) ?? 'draw'
 }
+// Rock defeats Scissors, Scissors defeats Paper, and Paper defeats Rock
+const shapeResult = (game) => {
+  const map = new Map([
+    // them, result, me
+    ['scissor, win', 'rock'],
+    ['paper, win', 'scissor'],
+    ['rock, win', 'paper'],
+    ['rock, lost', 'scissor'],
+    ['scissor, lost', 'paper'],
+    ['paper, lost', 'rock']
+  ])
+  const draw = game.split(', ')
+  return map.get(game) ?? draw[0]
+}
 
 const resultScore = {
   win: 6,
@@ -65,5 +114,6 @@ const resultScore = {
 export default {
   start,
   parseFile,
-  playGame
+  playGame,
+  startPartTwo
 }

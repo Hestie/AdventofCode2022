@@ -19,4 +19,9 @@ describe('dayTwo', () => {
     const result = app.start(parsedInput)
     expect(result).toEqual(15)
   })
+
+  it('should return total of all games for new rules', () => {
+    const result = app.startPartTwo(parsedInput)
+    expect(result).toEqual(12)
+  })
 })

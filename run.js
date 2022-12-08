@@ -1,4 +1,4 @@
-import app from './src/dayTwo/app.js'
+import app from './src/dayThree/part2.js'
 
 const run = async () => {
   try {

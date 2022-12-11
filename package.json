@@ -25,7 +25,7 @@
     "scripts": {
         "test": "jest",
         "start": "node run",
-        "eslint:fix": "eslint --fix ./*.js"
+        "eslint:fix": "eslint --fix ./src/**"
     },
     "type": "module",
     "babel": {

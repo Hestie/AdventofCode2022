@@ -1,8 +1,8 @@
-import app from './src/dayFive/app.js';
+import app from './src/daySix/app.js';
 
 const runPart1 = async () => {
   try {
-    const answer = app.start(9000);
+    const answer = app.start();
     console.log('answer Part 1:', answer);
   } catch (e) {
     console.log('Error:', e.stack);
@@ -11,7 +11,7 @@ const runPart1 = async () => {
 
 const runPart2 = async () => {
   try {
-    const answer = app.start(9001);
+    const answer = app.start(14);
     console.log('answer Part 2:', answer);
   } catch (e) {
     console.log('Error:', e.stack);

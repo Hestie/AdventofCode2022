@@ -11,7 +11,7 @@ const runPart1 = async () => {
 
 const runPart2 = async () => {
   try {
-    const answer = app.start();
+    const answer = app.startPart2();
     console.log('answer Part 2:', answer);
   } catch (e) {
     console.log('Error:', e.stack);

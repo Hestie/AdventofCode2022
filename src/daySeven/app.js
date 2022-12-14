@@ -1,11 +1,22 @@
+import sortBy from 'lodash/sortBy.js';
 import fileReader from '../fileReader.js';
 
 const start = (input) => {
   const array = input || parseFile();
   const directories = mapToDirectory(array);
   const total = calculateTotalSize(directories);
-  console.log(JSON.stringify(total));
   return sumTotal(total);
+};
+
+const startPart2 = (input) => {
+  const array = input || parseFile();
+  const directories = mapToDirectory(array);
+  const directoriesTotal = calculateTotalSize(directories);
+  const totalUsed = directoriesTotal.root.totalSize;
+  const unUsed = 70000000 - totalUsed;
+  const deleteSpace = 30000000 - unUsed;
+
+  return findDirectoryToDelete(directoriesTotal, deleteSpace);
 };
 
 const parseFile = () => {
@@ -81,9 +92,21 @@ const sumTotal = (directories) => {
   return total;
 };
 
+const findDirectoryToDelete = (directories, deleteSpace) => {
+  const canDelete = [];
+  const keys = Object.keys(directories);
+  keys.forEach((key) => {
+    if (directories[key].totalSize >= deleteSpace) {
+      canDelete.push(directories[key]);
+    }
+  });
+  return sortBy(canDelete, ['totalSize']);
+};
+
 export default {
   start,
   parseFile,
   mapToDirectory,
-  calculateTotalSize
+  calculateTotalSize,
+  startPart2
 };

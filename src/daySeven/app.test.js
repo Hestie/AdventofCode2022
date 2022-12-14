@@ -37,6 +37,11 @@ describe('daySeven', () => {
     expect(result).toBe(95437);
   });
 
+  it('should return folders greater than delete size ordered by size', () => {
+    const result = app.startPart2(input);
+    expect(result[0].totalSize).toBe(24933642);
+  });
+
   it('map input to directory with files and sizes', () => {
     const expected = {
       root: { size: 23352670, folderName: 'root' },
